@@ -1,0 +1,6 @@
+/* Add this to your main CSS file */
+@import "swiper/swiper-bundle.min.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
