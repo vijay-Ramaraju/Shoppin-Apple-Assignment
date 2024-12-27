@@ -1,31 +1,26 @@
 import React from "react";
 
-const cases = [
-  { id: 1, name: "Aluminum", price: 399 },
-  { id: 2, name: "Stainless Steel", price: 699 },
-  { id: 3, name: "Titanium", price: 799 },
-];
-
-const CaseSelection = ({ selectedCase, setSelectedCase }) => (
-  <div>
-    <h2 className="text-xl font-semibold mb-2">Select Case</h2>
-    <div className="flex space-x-4">
-      {cases.map((item) => (
-        <button
-          key={item.id}
-          onClick={() => setSelectedCase(item)}
-          className={`p-4 border rounded-lg ${
-            selectedCase?.id === item.id
-              ? "border-blue-500 bg-blue-100"
-              : "border-gray-300"
-          }`}
-        >
-          <div className="font-medium">{item.name}</div>
-          <div className="text-sm text-gray-600">${item.price}</div>
-        </button>
-      ))}
+const CaseSelection = ({ cases, onSelect }) => {
+  return (
+    <div className="w-1/3">
+      <div className="flex flex-wrap gap-2 justify-center">
+        {cases.map((caseItem) => (
+          <div
+            key={caseItem.id}
+            onClick={() => onSelect(caseItem)}
+            className=" rounded-md cursor-pointer text-center m-1 hover:shadow-lg transition-shadow "
+          >
+            <button
+              type="button"
+              className="border border-gray-300 bg-gray-200 px-2 text-black h-10 font-semibold m-0.5 rounded-md w-full"
+            >
+              {caseItem.material}
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default CaseSelection;

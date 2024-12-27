@@ -1,32 +1,19 @@
 import React from "react";
 
-const sizes = [
-  { id: 1, name: "41mm", price: 0 },
-  { id: 2, name: "45mm", price: 30 },
-];
-
-const SizeSelection = ({ selectedSize, setSelectedSize }) => (
-  <div>
-    <h2 className="text-xl font-semibold mb-2">Select Size</h2>
-    <div className="flex space-x-4">
+const SizeSelection = ({ sizes, onSelect }) => {
+  return (
+    <div className="text-center flex flex-wrap justify-between items-center  p-2 gap-1" >
       {sizes.map((size) => (
         <button
-          key={size.id}
-          onClick={() => setSelectedSize(size)}
-          className={`p-4 border rounded-lg ${
-            selectedSize?.id === size.id
-              ? "border-blue-500 bg-blue-100"
-              : "border-gray-300"
-          }`}
+          key={size}
+          onClick={() => onSelect(size)}
+          className=" text-sm border-none outline-none h-10 rounded-md bg-gray-300 font-semibold px-2"
         >
-          <div className="font-medium">{size.name}</div>
-          <div className="text-sm text-gray-600">
-            {size.price === 0 ? "No extra cost" : `+ $${size.price}`}
-          </div>
+          {size}mm
         </button>
       ))}
     </div>
-  </div>
-);
+  );
+};
 
 export default SizeSelection;
